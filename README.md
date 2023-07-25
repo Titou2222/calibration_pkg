@@ -272,8 +272,9 @@ rviz2
 - Click on "M" key to modify the points studied. Your goal is to minimize the zone of research and then click on "P" key to print the points. If you reduce your searching zone too quickly and have no points left to study the script may crash. So, be cautious when you are working with small zones.
 
 <p align="center">
-<img src="img/image_without_zone.png" alt="Example of image with all the key points" width="500">
+<img src="img/Image_without_zone.png" alt="Example of image with all the key points" width="500">
 </p>
+
 <p align="center">
 <img src="img/image_with_zone.png" alt="Example of image with a reduced zone of key points" width="500">
 </p>
