@@ -324,8 +324,10 @@ rviz2
 - You have finished your calibration. If the results are not perfect, add other points in different positions and place of your field of view. Don't forget to rotate your object, put it in the corners of your Field of view, at the top or at the bottom of your image.
 
 <p align="center">
-<img src="img/comp_ext_param_bad.png" alt="Example of a bad calibration" width="400">
+<img src="img/comp_ext_param_bad.png" alt="Example of a bad calibration" width="500">
 </p>
-![Example of a better calibration](img/comp_ext_param_better.png)
+<p align="center">
+<img src="img/comp_ext_param_better.png" alt="Example of a better calibration" width="500">
+</p>
 
         
