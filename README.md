@@ -170,7 +170,7 @@ rviz2
         You will have this kind of image :
         
 <p align="center">
-<img src="Thermal_ROS2.png" alt="Thermal image in ROS2" width="500">
+<img src="img/Thermal_ROS2.png" alt="Thermal image in ROS2" width="500">
 </p>  
 
         
@@ -179,7 +179,7 @@ rviz2
 ## Solidworks model
     
 <p align="center">
-<img src="V6.png" alt="Final version of the model" width="500">
+<img src="img/V6.png" alt="Final version of the model" width="500">
 </p>
     
 
@@ -217,10 +217,12 @@ rviz2
 - modify the path of the folders in the script where the images and the point clouds need to be saved on your computer
 - modify the names of topics in the creation of subscribers
 
-
-![Example of parameters to modify for image](img/sc_save_image.png)
-![Example of parameters to modify for pointcloud](img/sc_save_pointcloud.png)
-
+<p align="center">
+<img src="img/sc_save_image.png" alt="Example of parameters to modify for image" width="500">
+</p>
+<p align="center">
+<img src="img/sc_save_pointcloud.png" alt="Example of parameters to modify for pointcloud" width="500">
+</p>
 
 - build the package with your modification. Then, launch save\_image.py and save\_pointcloud.py
 ```
@@ -246,7 +248,7 @@ rviz2
 - modify the path of the folders in the script where the images and the point clouds where saved in the former step
 
 <p align="center">
-<img src="sc_modif_image.png" alt="Example of parameters to modify into open_modify_image.py" width="500">
+<img src="img/sc_modif_image.png" alt="Example of parameters to modify into open_modify_image.py" width="500">
 </p>
 
 
