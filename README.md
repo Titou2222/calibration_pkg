@@ -313,7 +313,7 @@ rviz2
     ros2 topic echo /zed2i/zed_node/rgb/camera_info
 ```
 <p align="center">
-<img src="img/sc_calibration.py.png" alt="Example of parameters to modify into calibration.py" width="500">
+<img src="img/sc_calibration.py.png" alt="Example of parameters to modify into calibration.py">
 </p>
 
 
