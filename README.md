@@ -294,12 +294,13 @@ rviz2
 - Modify the intrinsic parameters of your camera in your script. If you use the ZED2i camera, the zed\_wrapper package we detailed in part 2 "How to use components" allow you to find them by launching the program and echoing camera\_info
     
     First shell:
-  ```
+```
     cd ros2_ws
     source /opt/ros/<your-distro>/setup.bash
     ros2 launch zed_wrapper zed2i.launch.py
 ```
     Second shell:
+    
 ```
     cd ros2_ws
     source /opt/ros/<your-distro>/setup.bash
