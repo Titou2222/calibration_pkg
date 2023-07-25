@@ -14,7 +14,7 @@ To use this work, you need to use ROS2 as every package was made with ROS2 galac
     
 ### LiDAR package
 
-![Robosense Helios 5515](ressource/LiDAR_image.png)
+![Robosense Helios 5515](img/LiDAR_image.png)
 
         What sensor we used ... \\
         The package we will download is named $rslidar_sdk$. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
@@ -31,8 +31,8 @@ To use this work, you need to use ROS2 as every package was made with ROS2 galac
     
 ### Stereo Camera package
 
-![Zed2i camera](ressource/Stereo_image.png)
-![](ressource/.png)
+![Zed2i camera](img/Stereo_image.png)
+
 
 The stereo camera we used is the ZED2i stereo cameras. https://www.stereolabs.com/zed-2i/ The ZED2i camera is a stereoscopic camera used for 3D vision and mapping. It utilizes two image sensors and a stereo vision system to capture 3D images and videos. The ZED2i camera is compatible with multiple development platforms, including ROS2 and OpenCV, making it a popular choice among developers and researchers working in the fields of computer vision and robotics.
         
@@ -50,7 +50,7 @@ To use our stereo camera we will need the zed \textunderscore package \href{http
 
 This package is the most difficult to install properly. The package was originally made for ROS1 so we will divide this section in two parts. The first part is about installing the ROS1 package and in the "How to use components" you will find how to visualize your thermal images in ROS1. The next part will be about installing a the package in ROS2.
 
-![Seek Thermal Compact Pro thermal camera](ressource/Thermal_cam_image.png)
+![Seek Thermal Compact Pro thermal camera](img/Thermal_cam_image.png)
 
 
         
@@ -218,8 +218,8 @@ rviz2
 - modify the names of topics in the creation of subscribers
 
 
-![Example of parameters to modify for image](ressource/sc_save_image.png)
-![Example of parameters to modify for pointcloud](ressource/sc_save_pointcloud.png)
+![Example of parameters to modify for image](img/sc_save_image.png)
+![Example of parameters to modify for pointcloud](img/sc_save_pointcloud.png)
 
 
 - build the package with your modification. Then, launch save\_image.py and save\_pointcloud.py
@@ -251,7 +251,7 @@ rviz2
 
 
 
-![Example of parameters to modify into open_modify_pointcloud.py](ressource/sc_modif_pointcloud.png)
+![Example of parameters to modify into open_modify_pointcloud.py](img/sc_modif_pointcloud.png)
 
 
 - build the package with your modification. Then, launch open\_modify\_image.py and open\_modify\_pointcloud.py
@@ -269,8 +269,8 @@ rviz2
 - Click on "M" key to modify the points studied. Your goal is to minimize the zone of research and then click on "P" key to print the points. If you reduce your searching zone too quickly and have no points left to study the script may crash. So, be cautious when you are working with small zones.
 
 
-![Example of image with all the key points](ressource/image_without_zone.png)
-![Example of image with a reduced zone of key points](ressource/image_with_zone.png)
+![Example of image with all the key points](img/image_without_zone.png)
+![Example of image with a reduced zone of key points](img/image_with_zone.png)
 
 
 
@@ -306,7 +306,7 @@ rviz2
     ros2 topic echo /zed2i/zed_node/rgb/camera_info
 ```
 
-![Example of parameters to modify into calibration.py](ressource/sc_calibration.png)
+![Example of parameters to modify into calibration.py](img/sc_calibration.png)
 
 
 - As we subscribe to the rectified image of ZED2i camera, the distortion coefficients of your camera are 0,0,0,0,0. If you use another components or you subscribe to another topic, change them.
@@ -324,8 +324,8 @@ rviz2
 
 
         
-![Example of a bad calibration](ressource/comp_ext_param_bad.png)
+![Example of a bad calibration](img/comp_ext_param_bad.png)
 
-![Example of a better calibration](ressource/comp_ext_param_better.png)
+![Example of a better calibration](img/comp_ext_param_better.png)
 
         
