@@ -14,7 +14,9 @@ To use this work, you need to use ROS2 as every package was made with ROS2 galac
     
 ### LiDAR package
 
-![Robosense Helios 5515](img/LiDAR_image.png)
+<p align="center">
+<img src="img/LiDAR_image.png" alt="Robosense Helios 5515" width="500">
+</p>
 
         What sensor we used ... \\
         The package we will download is named $rslidar_sdk$. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
@@ -30,8 +32,9 @@ To use this work, you need to use ROS2 as every package was made with ROS2 galac
     
     
 ### Stereo Camera package
-
-![Zed2i camera](img/Stereo_image.png)
+<p align="center">
+<img src="img/Stereo_image.png" alt="Zed2i camera" width="500">
+</p>
 
 
 The stereo camera we used is the ZED2i stereo cameras. https://www.stereolabs.com/zed-2i/ The ZED2i camera is a stereoscopic camera used for 3D vision and mapping. It utilizes two image sensors and a stereo vision system to capture 3D images and videos. The ZED2i camera is compatible with multiple development platforms, including ROS2 and OpenCV, making it a popular choice among developers and researchers working in the fields of computer vision and robotics.
@@ -50,7 +53,9 @@ To use our stereo camera we will need the zed \textunderscore package \href{http
 
 This package is the most difficult to install properly. The package was originally made for ROS1 so we will divide this section in two parts. The first part is about installing the ROS1 package and in the "How to use components" you will find how to visualize your thermal images in ROS1. The next part will be about installing a the package in ROS2.
 
-![Seek Thermal Compact Pro thermal camera](img/Thermal_cam_image.png)
+<p align="center">
+<img src="img/Thermal_cam_image.png" alt="Seek Thermal Compact Pro thermal camera" width="500">
+</p>
 
 
         
@@ -120,16 +125,14 @@ ros2 launch rslidar_sdk start.py
 ```
 
         The node launch a rviz2 window by itself but you can also do it yourself: 
-        \lstset{language=bash}
-        \lstset{basicstyle=\footnotesize}
+
 ```
 rviz2
 ```
     
 ### Stereo Camera
-        To launch the node of the Stereo camera, you just need to open a terminal, source foxy and use the launch command: 
-        \lstset{language=bash}
-        \lstset{basicstyle=\footnotesize}
+To launch the node of the Stereo camera, you just need to open a terminal, source foxy and use the launch command: 
+
 ```
 source /opt/ros/foxy/setup.bash
 ros2 launch zed_wrapper zed2i.launch.py
@@ -143,12 +146,10 @@ rviz2
 ### Thermal Camera
 #### Use ROS1 package
 To launch the node of the thermal camera for ROS1, you just need to open a terminal, source noetic and use the launch command: 
-\lstset{language=bash}
-\lstset{basicstyle=\footnotesize}
-        
+``` 
 source /opt/ros/noetic/setup.bash
 roslaunch seekthermal_camera seekthermal_pro.launch
-        
+``` 
         To visualize it you can use rqt : 
 ```    
 rqt
@@ -168,18 +169,18 @@ rviz2
 ```
         You will have this kind of image :
         
-        
-        \includegraphics[width=0.5\linewidth]{Thermal_ROS2.png}
-        \caption{Thermal image in ROS2}
-        \label{fig:thermal}
+<p align="center">
+<img src="Thermal_ROS2.png" alt="Thermal image in ROS2" width="500">
+</p>  
+
         
         
 
 ## Solidworks model
     
-    
-    \includegraphics[width=0.5\textwidth]{V6.png}
-    \caption{Final version of the model}
+<p align="center">
+<img src="V6.png" alt="Final version of the model" width="500">
+</p>
     
 
     Installation guide :
@@ -190,7 +191,6 @@ rviz2
 ### How to install
 
     To have a multi sensors calibration done, the package has 7 programs : 
-    [label=$\bullet$]
       - save\_image.py and save\_pointcloud.py : Save images and point clouds,
       - open\_modify\_image.py and open\_modify\_pointcloud.py :Find the 2D key points in the images and the 3D key points in the point cloud,
       - calibration.py Get the extrinsic parameters associated with this key points using RANSAC algorithm. Then visualize the results of your calibration.
@@ -245,14 +245,15 @@ rviz2
         
 - modify the path of the folders in the script where the images and the point clouds where saved in the former step
 
+<p align="center">
+<img src="sc_modif_image.png" alt="Example of parameters to modify into open_modify_image.py" width="500">
+</p>
 
-![Example of parameters to modify into open_modify_image.py](sc_modif_image.png)
 
 
-
-
-![Example of parameters to modify into open_modify_pointcloud.py](img/sc_modif_pointcloud.png)
-
+<p align="center">
+<img src="img/sc_modif_pointcloud.png" alt="Example of parameters to modify into open_modify_pointcloud.py" width="500">
+</p>
 
 - build the package with your modification. Then, launch open\_modify\_image.py and open\_modify\_pointcloud.py
 ```
@@ -268,9 +269,12 @@ rviz2
 - You can now open a visualization window by clicking on "V" key. You can see a window opening with the point cloud or image you saved.
 - Click on "M" key to modify the points studied. Your goal is to minimize the zone of research and then click on "P" key to print the points. If you reduce your searching zone too quickly and have no points left to study the script may crash. So, be cautious when you are working with small zones.
 
-
-![Example of image with all the key points](img/image_without_zone.png)
-![Example of image with a reduced zone of key points](img/image_with_zone.png)
+<p align="center">
+<img src="img/image_without_zone.png" alt="Example of image with all the key points" width="500">
+</p>
+<p align="center">
+<img src="img/image_with_zone.png" alt="Example of image with a reduced zone of key points" width="500">
+</p>
 
 
 
@@ -306,8 +310,10 @@ rviz2
     source /opt/ros/<your-distro>/setup.bash
     ros2 topic echo /zed2i/zed_node/rgb/camera_info
 ```
+<p align="center">
+<img src="img/sc_calibration.py.png" alt="Example of parameters to modify into calibration.py" width="500">
+</p>
 
-![Example of parameters to modify into calibration.py](img/sc_calibration.py.png)
 
 
 - As we subscribe to the rectified image of ZED2i camera, the distortion coefficients of your camera are 0,0,0,0,0. If you use another components or you subscribe to another topic, change them.
