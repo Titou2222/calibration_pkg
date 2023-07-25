@@ -306,7 +306,7 @@ rviz2
     ros2 topic echo /zed2i/zed_node/rgb/camera_info
 ```
 
-![Example of parameters to modify into calibration.py](img/sc_calibration.png)
+![Example of parameters to modify into calibration.py](img/sc_calibration.py.png)
 
 
 - As we subscribe to the rectified image of ZED2i camera, the distortion coefficients of your camera are 0,0,0,0,0. If you use another components or you subscribe to another topic, change them.
