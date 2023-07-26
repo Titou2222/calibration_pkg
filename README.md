@@ -171,7 +171,7 @@ To use this work, you need to use ROS2 as every package was made with ROS2 galac
 ### LiDAR
 
 <p align="center">
-<img src="img/LiDAR_image.png" alt="Robosense Helios 5515" width="500">
+<img src="img/LiDAR_image.png" alt="Robosense Helios 5515" width="300">
 </p>
 
         We used the Robosense helios 5515 as a LiDAR. You can copare it to the other Robosense LiDAR on the official page : https://www.robosense.ai/en/rslidar/RS-Helios. And buy it on Robosense webpage : https://www.roscomponents.com/en/lidar-laser-scanner/312-rs-helios-5515-.html. The package we will download is named rslidar_sdk. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
