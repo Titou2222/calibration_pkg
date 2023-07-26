@@ -10,18 +10,15 @@ This work was made during 2 months and a half at the Escuela Tecnica Superior de
     
 ## OS2 \& Ubuntu
 
-To use this work, you need to use ROS2 as every package was made with ROS2 galactic under Ubuntu 20.04.To install ROS2 Galactic, you can follow the steps of the official ROS website: https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html
+To use this work, you need to use ROS2 as every package was made with ROS2 galactic under Ubuntu 20.04. You can also use ROS2 Humble with Ubuntu 22.04. To install ROS2 Galactic, you can follow the steps of the official ROS website: https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html
     
-### LiDAR package
+### LiDAR
 
 <p align="center">
 <img src="img/LiDAR_image.png" alt="Robosense Helios 5515" width="500">
 </p>
 
-        What sensor we used ... \\
-        The package we will download is named $rslidar_sdk$. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
-        
-        
+        We used the Robosense helios 5515 as a LiDAR. You can copare it to the other Robosense LiDAR on the official page : https://www.robosense.ai/en/rslidar/RS-Helios. And buy it on Robosense webpage : https://www.roscomponents.com/en/lidar-laser-scanner/312-rs-helios-5515-.html. The package we will download is named rslidar_sdk. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
         
 - Follow the steps to install the package in <workspace>/src folder as written on the package GitHub : https://github.com/RoboSense-LiDAR/rslidar_sdk. You will also need to install Yaml and libpcap.
 - If you use ROS2, you have to modify the file package.xml and replace its content by the contents package\textunderscore ros2.xml
