@@ -8,18 +8,18 @@ This work was made during 2 months and a half at the Escuela Tecnica Superior de
 ## Multi-sensors calibration
 ### How to install
 
-    To have a multi sensors calibration done, the package has 7 programs : 
-      - save\_image.py and save\_pointcloud.py : Save images and point clouds,
-      - open\_modify\_image.py and open\_modify\_pointcloud.py :Find the 2D key points in the images and the 3D key points in the point cloud,
-      - calibration.py Get the extrinsic parameters associated with this key points using RANSAC algorithm. Then visualize the results of your calibration.
-      - calib.py : library to store all the utility functions the other programs use.
+To have a multi sensors calibration done, the package has 7 programs : 
+  - save\_image.py and save\_pointcloud.py : Save images and point clouds,
+  - open\_modify\_image.py and open\_modify\_pointcloud.py :Find the 2D key points in the images and the 3D key points in the point cloud,
+  - calibration.py Get the extrinsic parameters associated with this key points using RANSAC algorithm. Then visualize the results of your calibration.
+  - calib.py : library to store all the utility functions the other programs use.
     
 
-    The package is really modular, you can modify one of the script use in a step without corrupting all your program. Moreover, if you want to make modifications, you can work on different part of the package with your colleagues at the same time.
+The package is really modular, you can modify one of the script use in a step without corrupting all your program. Moreover, if you want to make modifications, you can work on different part of the package with your colleagues at the same time.
 
 ### Steps to calibrate your system
 
-    What you should have done before starting this part:
+What you should have done before starting this part:
     
 - Set up your mecanical system with all your sensors. You can find an example in the part 3 "Solidworks model" of this report. The sensors should not moving during all the calibration and in your future experiments. If they have move, you should restart the entire calibration,
 - Install the ROS2 packages for your camera and your LiDAR. You can find the example of the components we have used in part 1 : "Installation" and how to interface to them with ROS2 in part 2 "How to use the components",       
@@ -203,7 +203,7 @@ To use our stereo camera we will need the zed_wrapper package https://github.com
 We used the Seek thermal compact pro camera: https://www.thermal.com/compact-series.html. No package was created for ROS2 so we had to create on by ourself, you can find the package on my other repository named : seek_thermal_ROS2.This package is the most difficult to install properly. 
 
 <p align="center">
-<img src="img/Thermal_cam_image.png" alt="Seek Thermal Compact Pro thermal camera" width="500">
+<img src="img/Thermal_cam_image.png" alt="Seek Thermal Compact Pro thermal camera" width="300">
 </p>
 
 
