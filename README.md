@@ -164,7 +164,7 @@ This work was made during 2 months and a half at the Escuela Tecnica Superior de
 
 
 ## Use the components we used:    
-## OS2 \& Ubuntu
+### OS2 \& Ubuntu
 
 To use this work, you need to use ROS2 as every package was made with ROS2 galactic under Ubuntu 20.04. You can also use ROS2 Humble with Ubuntu 22.04. To install ROS2 Galactic, you can follow the steps of the official ROS website: https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html
     
@@ -207,7 +207,7 @@ We used the Seek thermal compact pro camera: https://www.thermal.com/compact-ser
 </p>
 
 
-#### How to correct installation issues :
+### How to correct installation issues :
 **I can't build OpenCV3**
 If you installed the stereo camera package, you installed CUDA. This software layer can cause you some troubles with OpenCV3 installation. To prevent it, you will need to add \textbf{-DWITH\_CUDA = OFF} when you are building your package. OpenCV3 will now be installed without using CUDA but it's not mandatory and your package will work without it.
 
