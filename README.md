@@ -1,5 +1,5 @@
 ## Introduction
-This work was made during 2 months and a half at the Escuela Tecnica Superior de Ingenieria Industriales under the supervision of Dr. Jesus Morales Rodriguez. The goal is to show the components we used, how they individualy work and how the calibration system works. We used:
+This package allows user to calibrate their LiDAR with cameras (RGB and thermal ones). During our experiments, we used the components:
 
 - the Helios 5515 LiDAR from Robosense. \href{https://www.robosense.ai/en/rslidar/RS-Helios}{link}
 - the ZED2i stereo camera from Stereolabs \href{https://www.stereolabs.com/zed-2i/}{link}
