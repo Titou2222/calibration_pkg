@@ -5,185 +5,6 @@ This work was made during 2 months and a half at the Escuela Tecnica Superior de
 - the ZED2i stereo camera from Stereolabs \href{https://www.stereolabs.com/zed-2i/}{link}
 - the Compact Pro thermal Camera from SeekThermal \href{https://www.thermal.com/compact-series.html}{link}
 
-
-## Installation
-    
-## OS2 \& Ubuntu
-
-To use this work, you need to use ROS2 as every package was made with ROS2 galactic under Ubuntu 20.04. You can also use ROS2 Humble with Ubuntu 22.04. To install ROS2 Galactic, you can follow the steps of the official ROS website: https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html
-    
-### LiDAR
-
-<p align="center">
-<img src="img/LiDAR_image.png" alt="Robosense Helios 5515" width="500">
-</p>
-
-        We used the Robosense helios 5515 as a LiDAR. You can copare it to the other Robosense LiDAR on the official page : https://www.robosense.ai/en/rslidar/RS-Helios. And buy it on Robosense webpage : https://www.roscomponents.com/en/lidar-laser-scanner/312-rs-helios-5515-.html. The package we will download is named rslidar_sdk. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
-        
-- Follow the steps to install the package in <workspace>/src folder as written on the package GitHub : https://github.com/RoboSense-LiDAR/rslidar_sdk. You will also need to install Yaml and libpcap.
-- If you use ROS2, you have to modify the file package.xml and replace its content by the contents package\textunderscore ros2.xml
-- To indicate to the package what LiDAR you use, modify the file config/config.yaml by changing the lidar\textunderscore type of your LiDAR. (In my case lidar\textunderscore type: RSHELIOS)
-
-    
-    
-    
-    
-### Stereo Camera package
-<p align="center">
-<img src="img/Stereo_image.png" alt="Zed2i camera" width="500">
-</p>
-
-
-The stereo camera we used is the ZED2i stereo cameras. https://www.stereolabs.com/zed-2i/ The ZED2i camera is a stereoscopic camera used for 3D vision and mapping. It utilizes two image sensors and a stereo vision system to capture 3D images and videos. The ZED2i camera is compatible with multiple development platforms, including ROS2 and OpenCV, making it a popular choice among developers and researchers working in the fields of computer vision and robotics.
-        
-To use our stereo camera we will need the zed \textunderscore package \href{https://github.com/stereolabs/zed-ros2-wrapper}{link}. To install it, it's pretty straight forward as for ROS2 installation. You will need to install two dependencies and the package: 
-
-- CUDA: \href{https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local}{link}
-- and ZED SDK: \href{https://www.stereolabs.com/developers/release/}{link}
-- and follow the steps of the GitHub.
-
-  After that, you only have to plug your ZED2i camera on a 3.2 USB port. Your camera is set up.
-    
-
-    
-### Thermal Camera package
-
-This package is the most difficult to install properly. The package was originally made for ROS1 so we will divide this section in two parts. The first part is about installing the ROS1 package and in the "How to use components" you will find how to visualize your thermal images in ROS1. The next part will be about installing a the package in ROS2.
-
-<p align="center">
-<img src="img/Thermal_cam_image.png" alt="Seek Thermal Compact Pro thermal camera" width="500">
-</p>
-
-
-        
-#### Install ROS1 package
-
-- Install Open CV3 by entering the first line of command of this file \href{https://gist.githubusercontent.com/syneart/3e6bb68de8b6390d2eb18bff67767dcb/raw/OpenCV3.2withContrib.sh?fbclid=IwAR2uYKMEiVSCMom-KfYFPUw2ZbwvKziqvv-Y6mto9rkrnG6Btq1Cjrf_Plc}{link}.
-- download libusb with this command line : 
-
-```
-sudo apt install libusb-1.0-0-dev
-```
-
-- To download the ROS1 package you only have to follow that procedure written in this github page: \href{https://github.com/sfalexrog/seekthermal_camera}{link}.
-
-
-#### Install ROS2 package
-
-- Install Open CV3 by entering the first line of command of this file \href{https://gist.githubusercontent.com/syneart/3e6bb68de8b6390d2eb18bff67767dcb/raw/OpenCV3.2withContrib.sh?fbclid=IwAR2uYKMEiVSCMom-KfYFPUw2ZbwvKziqvv-Y6mto9rkrnG6Btq1Cjrf_Plc}{link}. 
-
-- Then, to download the ROS2 package you only have to go to this link, download the library seek\_thermal and the package seekthermal\_camera.
-- You first need to build the library seek\_thermal.
-```
-        cd path/to/seek_thermal/build
-        cmake ..
-        make
-        sudo make install
-```
-- Then, you need to build your library zith ROS2 to have your headers at the right place
-```
-        cd ~/ros2_ws
-        source /opt/ros/foxy/setup.bash
-        colcon build --packages-select seek_thermal
-        source install/setup.bash
-```
-
-- In order to be able to run the driver as an unprivileged user, you need to set permissions for the camera device. This can be done automatically by copying the config/99-seekthermal.rules file from the repository to /etc/udev/rules.d and running the following commands: (The user accessing the camera must be a member of video group.)
-
-```
-        sudo udevadm control --reload-rules
-        sudo udevadm trigger
-```
-
-- Open the seekthermal\_camera package, go to the CmakeLists.txt and modify the path of the include and lib folder of your seek\_thermal library.
-
-
-
-#### How to correct installation issues :
-**I can't build OpenCV3**
-If you installed the stereo camera package, you installed CUDA. This software layer can cause you some troubles with OpenCV3 installation. To prevent it, you will need to add \textbf{-DWITH\_CUDA = OFF} when you are building your package. OpenCV3 will now be installed without using CUDA but it's not mandatory and your package will work without it. \\ \\
-**libjasper-dev is not found on my computer**
-When you will install OpenCV3 you may have problems with the library libjasper-dev. If it's the case, use this link to find solutions to your problem \href{https://askubuntu.com/questions/1145811/error-installing-libjasper-dev-and-libpng12-package-in-ubuntu-19-04?rq=1}{link} \\ \\
-**Even with this change I can't build it**
-Another problem we had when building OpenCV3 was the make command line which crashed during the process because we used too many threads. The computer we used had 24 threads, we had to only use 4 threads to make it compile properly: **make -j4**
-**I have a Cmakelist.txt problem**
-You may also have a problem when compiling your seekthermal\_camera package because of your Cmakelist.txt. To prevent it, navigate to your package > vendor > libseekthermal\_lite > Cmakelist.txt. Open this file and replace the line find\_package{OpenCV 3 REQUIRED COMPONENTS} by \textbf{find\_package{OpenCV 3 REQUIRED}}. 
-
-## How to use components
-
-    
-### LiDAR
-
-To launch the node of the LiDAR, you just need to open a terminal, source foxy and use the launch command: 
-
-```
-source /opt/ros/foxy/setup.bash
-ros2 launch rslidar_sdk start.py
-```
-
-        The node launch a rviz2 window by itself but you can also do it yourself: 
-
-```
-rviz2
-```
-    
-### Stereo Camera
-To launch the node of the Stereo camera, you just need to open a terminal, source foxy and use the launch command: 
-
-```
-source /opt/ros/foxy/setup.bash
-ros2 launch zed_wrapper zed2i.launch.py
-```
-        To visualize it you can use rviz2 : 
-```
-rviz2
-```
-    
-    
-### Thermal Camera
-#### Use ROS1 package
-To launch the node of the thermal camera for ROS1, you just need to open a terminal, source noetic and use the launch command: 
-``` 
-source /opt/ros/noetic/setup.bash
-roslaunch seekthermal_camera seekthermal_pro.launch
-``` 
-        To visualize it you can use rqt : 
-```    
-rqt
-``` 
-        You will have this kind of image : 
-
-#### Use ROS2 package
-To launch the node of the thermal camera for ROS2, you just need to open a terminal, source foxy and use the launch command: 
-        
-        
-source /opt/ros/foxy/setup.bash
-ros2 launch seekthermal_camera seekthermal_camera.launch.py
-        
-        To visualize it you can use rviz2 : 
-```
-rviz2
-```
-        You will have this kind of image :
-        
-<p align="center">
-<img src="img/Thermal_ROS2.png" alt="Thermal image in ROS2" width="500">
-</p>  
-
-        
-        
-
-## Solidworks model
-    
-<p align="center">
-<img src="img/V6.png" alt="Final version of the model" width="500">
-</p>
-    
-
-    Installation guide :
-          
-
-
 ## Multi-sensors calibration
 ### How to install
 
@@ -335,5 +156,71 @@ rviz2
 <p align="center">
 <img src="img/comp_ext_param_better.png" alt="Example of a better calibration" width="500">
 </p>
+
+
+
+
+
+
+
+## Use the components we used:    
+## OS2 \& Ubuntu
+
+To use this work, you need to use ROS2 as every package was made with ROS2 galactic under Ubuntu 20.04. You can also use ROS2 Humble with Ubuntu 22.04. To install ROS2 Galactic, you can follow the steps of the official ROS website: https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html
+    
+### LiDAR
+
+<p align="center">
+<img src="img/LiDAR_image.png" alt="Robosense Helios 5515" width="500">
+</p>
+
+        We used the Robosense helios 5515 as a LiDAR. You can copare it to the other Robosense LiDAR on the official page : https://www.robosense.ai/en/rslidar/RS-Helios. And buy it on Robosense webpage : https://www.roscomponents.com/en/lidar-laser-scanner/312-rs-helios-5515-.html. The package we will download is named rslidar_sdk. First, download the package from the official GitHub of the package : \href{https://github.com/RoboSense-LiDAR/rslidar_sdk}{link}. This package needs extra steps to work properly : 
+        
+- Follow the steps to install the package in <workspace>/src folder as written on the package GitHub : https://github.com/RoboSense-LiDAR/rslidar_sdk. You will also need to install Yaml and libpcap.
+- If you use ROS2, you have to modify the file package.xml and replace its content by the contents package\textunderscore ros2.xml
+- To indicate to the package what LiDAR you use, modify the file config/config.yaml by changing the lidar\textunderscore type of your LiDAR. (In my case lidar\textunderscore type: RSHELIOS)
+
+
+### Stereo Camera
+<p align="center">
+<img src="img/Stereo_image.png" alt="Zed2i camera" width="500">
+</p>
+
+
+The stereo camera we used is the ZED2i stereo cameras. https://www.stereolabs.com/zed-2i/. 
+        
+To use our stereo camera we will need the zed_wrapper package https://github.com/stereolabs/zed-ros2-wrapper. To install it, it's pretty straight forward, you will need to install two dependencies and the package: 
+
+- CUDA: https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local
+- and ZED SDK: \href{https://www.stereolabs.com/developers/release/}{link}
+- and follow the steps of the GitHub.
+
+  After that, you only have to plug your ZED2i camera on a 3.2 USB port. Your camera is set up.
+    
+
+### Thermal Camera
+
+We used the Seek thermal compact pro camera: https://www.thermal.com/compact-series.html. No package was created for ROS2 so we had to create on by ourself, you can find the package on my other repository named : seek_thermal_ROS2.This package is the most difficult to install properly. 
+
+<p align="center">
+<img src="img/Thermal_cam_image.png" alt="Seek Thermal Compact Pro thermal camera" width="500">
+</p>
+
+
+#### How to correct installation issues :
+**I can't build OpenCV3**
+If you installed the stereo camera package, you installed CUDA. This software layer can cause you some troubles with OpenCV3 installation. To prevent it, you will need to add \textbf{-DWITH\_CUDA = OFF} when you are building your package. OpenCV3 will now be installed without using CUDA but it's not mandatory and your package will work without it. \\ \\
+**libjasper-dev is not found on my computer**
+When you will install OpenCV3 you may have problems with the library libjasper-dev. If it's the case, use this link to find solutions to your problem \href{https://askubuntu.com/questions/1145811/error-installing-libjasper-dev-and-libpng12-package-in-ubuntu-19-04?rq=1}{link} \\ \\
+**Even with this change I can't build it**
+Another problem we had when building OpenCV3 was the make command line which crashed during the process because we used too many threads. The computer we used had 24 threads, we had to only use 4 threads to make it compile properly: **make -j4**
+**I have a Cmakelist.txt problem**
+You may also have a problem when compiling your seekthermal\_camera package because of your Cmakelist.txt. To prevent it, navigate to your package > vendor > libseekthermal\_lite > Cmakelist.txt. Open this file and replace the line find\_package{OpenCV 3 REQUIRED COMPONENTS} by \textbf{find\_package{OpenCV 3 REQUIRED}}. 
+
+<p align="center">
+<img src="img/Thermal_ROS2.png" alt="Thermal image in ROS2" width="500">
+</p>  
+
+
 
         
